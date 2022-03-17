@@ -141,6 +141,11 @@ ggplot(day_and_hour, aes(day, hour, fill = Total)) +
   geom_tile(color = "white") +
   ggtitle("Heat Map by Hour and Day")
 
+day_month_group <- data_2014 %>%
+  group_by(day, month) %>%
+  dplyr::summarize(Total = n())
+datatable(day_month_group)
+
 # Second, we will plot Heatmap by Month and Day.
 ggplot(day_month_group, aes(day, month, fill = Total)) +
   geom_tile(color = "white") +
